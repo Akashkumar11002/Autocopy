@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Copy</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+    <div class="app">
+
+        <!-- ── History view (default) ── -->
+        <div id="historyView">
+
+            <header class="header">
+                <div>
+                    <h1>Auto Copy</h1>
+                    <p>Automatically copy selected text</p>
+                </div>
+                <button id="settingsBtn" class="icon-btn" type="button" aria-label="Settings" title="Settings">⚙</button>
+            </header>
+
+            <section class="history-section">
+
+                <div class="section-bar">
+                    <span class="section-label">Clipboard History</span>
+                    <button id="clearHistoryBtn" class="text-btn" type="button">Clear</button>
+                </div>
+
+                <ul id="historyList" class="history-list"></ul>
+
+                <p id="historyEmpty" class="history-empty">No history yet.</p>
+
+            </section>
+
+        </div>
+
+        <!-- ── Settings view ── -->
+        <div id="settingsView" hidden>
+
+            <header class="header">
+                <button id="backBtn" class="icon-btn" type="button" aria-label="Back" title="Back">←</button>
+                <span class="header-title">Settings</span>
+            </header>
+
+            <section class="settings-section">
+
+                <div class="setting-row">
+                    <span class="setting-name">Auto Copy</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="enabled">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-row">
+                    <span class="setting-name">Notifications</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="showToast">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-row">
+                    <span class="setting-name">Prevent Duplicates</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="preventDuplicates">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-row">
+                    <span class="setting-name">Clipboard History</span>
+                    <label class="toggle">
+                        <input type="checkbox" id="historyEnabled">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <button id="siteAccessBtn" class="nav-row" type="button">
+                    <span class="setting-name">Website Access</span>
+                    <span class="nav-arrow">›</span>
+                </button>
+
+            </section>
+
+        </div>
+
+        <!-- ── Site Access view ── -->
+        <div id="siteAccessView" hidden>
+
+            <header class="header">
+                <button id="siteAccessBackBtn" class="icon-btn" type="button" aria-label="Back" title="Back">←</button>
+                <span class="header-title">Website Access</span>
+            </header>
+
+            <section class="site-access-section">
+
+                <div class="current-site-block">
+                    <span class="section-label">Current website</span>
+                    <span id="currentHostnameEl" class="current-hostname"></span>
+                </div>
+
+                <div class="radio-group">
+                    <label class="radio-row">
+                        <input type="radio" name="siteMode" id="modeAll" value="all">
+                        <span>Allow on all websites</span>
+                    </label>
+                    <label class="radio-row">
+                        <input type="radio" name="siteMode" id="modeSelected" value="selected">
+                        <span>Allow only selected websites</span>
+                    </label>
+                </div>
+
+                <div id="allowedSitesSection" hidden>
+                    <div class="section-bar">
+                        <span class="section-label">Allowed websites</span>
+                    </div>
+                    <ul id="allowedSitesList" class="site-list"></ul>
+                    <button id="addSiteBtn" class="add-site-btn" type="button">+ Allow this website</button>
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+    <script src="../utils/constants.js"></script>
+    <script src="../utils/storage.js"></script>
+    <script src="../utils/siteAccess.js"></script>
+    <script src="popup.js"></script>
+
+</body>
+</html>
